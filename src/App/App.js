@@ -9,13 +9,16 @@ class App extends Component {
     })
   }
   componentDidMount() {
-    fetch()
+    fetch('https://swapi.co/api/')
     .then(response => response.json())
-    .then(data => this.setState({data: data})) 
+    .then(data => console.log(data)) 
     .catch(err => console.log(err))
   }
-
-  render()
+  render() {
+    return <div>hi</div>
+  }
+  
 }
+
 
 export default App;
