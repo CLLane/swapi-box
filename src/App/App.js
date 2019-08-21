@@ -5,7 +5,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = ({
-      data: [],
+ 
       people: [],
       planets: [],
       vehicles: [],
@@ -13,53 +13,64 @@ class App extends Component {
     })
   }
   componentDidMount() {
-    fetch('https://swapi.co/api/')
+    fetch('https://swapi.co/api/people')
     .then(response => response.json())
-    .then(data => this.fetchAll(data))
-    .then(data => this.fetchPersonInfo(this.state.people))
-    .then(data => this.setState({data: data}))
-    .catch(err => console.log(err))
+    .then(data => this.getPersonInfo(data.results))
+    .then(data => this.getPersonPlanet(data))
+    .then(data => this.getPersonSpecies(data))
+    .then(data => this.setState({people: data}))
+
+    fetch('https://swapi.co/api/vehicles')
+    .then(response => response.json())
+    .then(data => this.getVehicleInfo(data.results))
+    .then(data => this.setState({vehicles: data}))
+
+    setTimeout(() => {
+      console.log(this.state)
+    }, 3000);
   }
   
-  fetchAll = (data) => {
-    const people = 
-    fetch(data.people)
-      .then(response => response.json())
-      .then(characters => this.setState({people: characters}))
-    
-    const planets = fetch(data.planets)
-      .then(response => response.json())
-      .then(planet => this.setState({ planets: planet }));
+getVehicleInfo = (data) => {
+  let vehicles = data.map(vehicle => {
+    return {
+      name: vehicle.name,
+      model: vehicle.model,
+      class: vehicle.vehicle_class,
+      numberOfPassengers: vehicle.passengers
+    };
+  })
+  return vehicles
+}
 
-    const vehicles = fetch(data.vehicles)
-      .then(response => response.json())
-      .then(vehicle => this.setState({ vehicles: vehicle }));
-
-    const films = fetch(data.films)
-      .then(response => response.json())
-      .then(film => this.setState({ films: film }));
-    
-      return Promise.all([people, planets, vehicles, films])
+ getPersonInfo = (data) => {
+    let people = data.map(person => {
+      return {
+        name: person.name,
+        homeworld: person.homeworld,
+        species: person.species[0],
+        language: '',
+        population: ''
+      }
+    })
+    return people
     }
-    
-    fetchPersonInfo = (people) => {
-      const homeWorlds = people.results.map(person => {
-        return fetch(person.homeworld)
-        .then(response => response.json())
-        .then(data => ({homeworld: data.name, name: person.name}))
-      })
+ 
+  getPersonPlanet = (data) => {
+    let promises = data.map(person => {
+     return fetch(person.homeworld)
+      .then(response => response.json())
+      .then(data => ({...person, homeworld: data.name, population: data.population}))
+    })
+   return Promise.all(promises)
+  }
 
-        const species = people.results.map((person, i) => {
-          return fetch(person.species)
-            .then(response => response.json())
-            .then(type => ({
-              name: person.name,
-              homeworld: homeWorlds[i],
-              species: type.name
-            }));
-        });
-      setTimeout(() => {console.log(species)}, 6000)
-      // return Promise.all(homeWorlds)
+  getPersonSpecies = (data) => {
+     let promises = data.map(person => {
+       return fetch(person.species)
+       .then(response => response.json())
+       .then(data => ({...person, species: data.name, language: data.language}))
+     })
+     return Promise.all(promises)
   }
     
   //Data needed for film
