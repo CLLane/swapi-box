@@ -30,10 +30,48 @@ class App extends Component {
       .then(data => data.results)
       .then(data => this.setState({films: data[Math.floor(Math.random() * Math.floor(7))].opening_crawl}));
 
+    fetch("https://swapi.co/api/planets")
+    .then(response => response.json())
+    // .then(data => this.getPlanetInfo(data.results))
+    .then(data => this.getResidents(data.results))
+    .then(data => this.setState({planets: data}))
     setTimeout(() => {
       console.log(this.state)
-    }, 5000);
+    }, 9000);
+
   }
+
+//getResidents map over planets, declare empty array,  map over residents -> fetch each resident .thens, return the planet object, return array of the planet objects
+
+getResidents = (data) => {
+  let planets = data.map(planet => {
+    let array = [];
+    planet.residents.forEach(resident => {
+      return fetch(resident).then(res => res.json()).then(data => array.push(data.name))
+    })
+    return {
+      name: planet.name,
+      terrain: planet.terrain,
+      population: planet.population,
+      climate: planet.climate,
+      residents: array
+    };
+  })
+  return planets
+}
+
+getPlanetInfo = (data) => {
+  let planets = data.map(planet => {
+    return {
+      name: planet.name,
+      terrain: planet.terrain,
+      population: planet.population,
+      climate: planet.climate,
+      residents: planet.residents
+    }
+  })
+  return planets
+}
   
 getVehicleInfo = (data) => {
   let vehicles = data.map(vehicle => {
