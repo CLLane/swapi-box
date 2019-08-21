@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Container from "../Container/Container.js";
+import Nav from "../Nav/Nav.js";
 import "./App.css";
 import { thisExpression } from "@babel/types";
 
@@ -120,6 +121,7 @@ class App extends Component {
     return (
       <div>
         <h3>{this.state.films}</h3>
+        <Nav />
         <Container people={this.state.people} planets={this.state.planets} vehicles={this.state.vehicles}/>
       </div>
     );
