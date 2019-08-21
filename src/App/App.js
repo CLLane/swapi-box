@@ -9,7 +9,7 @@ class App extends Component {
       people: [],
       planets: [],
       vehicles: [],
-      films: []
+      films: ''
     })
   }
   componentDidMount() {
@@ -24,6 +24,11 @@ class App extends Component {
     .then(response => response.json())
     .then(data => this.getVehicleInfo(data.results))
     .then(data => this.setState({vehicles: data}))
+
+    fetch("https://swapi.co/api/films")
+      .then(response => response.json())
+      .then(data => data.results)
+      .then(data => this.setState({films: data[Math.floor(Math.random() * Math.floor(7))].opening_crawl}));
 
     setTimeout(() => {
       console.log(this.state)
