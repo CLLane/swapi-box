@@ -1,26 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import Container from "../Container/Container.js";
-import './App.css';
+import "./App.css";
 
 class App extends Component {
   constructor() {
-    super()
-    this.state = ({
- 
+    super();
+    this.state = {
       people: [],
       planets: [],
       vehicles: [],
-      films: ''
-    })
+      films: ""
+    };
   }
   componentDidMount() {
-    fetch('https://swapi.co/api/people')
+    fetch("https://swapi.co/api/people")
       .then(response => response.json())
       .then(data => this.getPersonInfo(data.results))
       .then(data => this.getPersonPlanet(data))
       .then(data => this.getPersonSpecies(data))
-      .then(data => this.setState({people: data}))
-      .catch(error => error.message)
+      .then(data => this.setState({ people: data }))
+      .catch(error => error.message);
 
     fetch("https://swapi.co/api/vehicles")
       .then(response => response.json())
@@ -33,8 +32,7 @@ class App extends Component {
       .then(data => data.results)
       .then(data =>
         this.setState({
-          films:
-            data[Math.floor(Math.random() * Math.floor(7))].opening_crawl
+          films: data[Math.floor(Math.random() * Math.floor(7))].opening_crawl
         })
       )
       .catch(error => error.message);
@@ -46,83 +44,84 @@ class App extends Component {
       .catch(error => error.message);
   }
 
+  getResidents = data => {
+    let planets = data.map(planet => {
+      let array = [];
+      planet.residents.forEach(resident => {
+        return fetch(resident)
+          .then(res => res.json())
+          .then(data => array.push(data.name));
+      });
+      return {
+        name: planet.name,
+        terrain: planet.terrain,
+        population: planet.population,
+        climate: planet.climate,
+        residents: array
+      };
+    });
+    return planets;
+  };
 
-getResidents = (data) => {
-  let planets = data.map(planet => {
-    let array = [];
-    planet.residents.forEach(resident => {
-      return fetch(resident).then(res => res.json()).then(data => array.push(data.name))
-    })
-    return {
-      name: planet.name,
-      terrain: planet.terrain,
-      population: planet.population,
-      climate: planet.climate,
-      residents: array
-    };
-  })
-  return planets
-}
+  getVehicleInfo = data => {
+    let vehicles = data.map(vehicle => {
+      return {
+        name: vehicle.name,
+        model: vehicle.model,
+        vehicleClass: vehicle.vehicle_class,
+        numberOfPassengers: vehicle.passengers
+      };
+    });
+    return vehicles;
+  };
 
-getVehicleInfo = (data) => {
-  let vehicles = data.map(vehicle => {
-    return {
-      name: vehicle.name,
-      model: vehicle.model,
-      class: vehicle.vehicle_class,
-      numberOfPassengers: vehicle.passengers
-    };
-  })
-  return vehicles
-}
-
- getPersonInfo = (data) => {
+  getPersonInfo = data => {
     let people = data.map(person => {
       return {
         name: person.name,
         homeworld: person.homeworld,
         species: person.species[0],
-        language: '',
-        population: ''
-      }
-    })
-    return people
-    }
- 
-  getPersonPlanet = (data) => {
-    let promises = data.map(person => {
-     return fetch(person.homeworld)
-      .then(response => response.json())
-      .then(data => ({...person, homeworld: data.name, population: data.population}))
-    })
-   return Promise.all(promises)
-  }
+        language: "",
+        population: ""
+      };
+    });
+    return people;
+  };
 
-  getPersonSpecies = (data) => {
-     let promises = data.map(person => {
-       return fetch(person.species)
-       .then(response => response.json())
-       .then(data => ({...person, species: data.name, language: data.language}))
-     })
-     return Promise.all(promises)
-  }
-    
+  getPersonPlanet = data => {
+    let promises = data.map(person => {
+      return fetch(person.homeworld)
+        .then(response => response.json())
+        .then(data => ({
+          ...person,
+          homeworld: data.name,
+          population: data.population
+        }));
+    });
+    return Promise.all(promises);
+  };
+
+  getPersonSpecies = data => {
+    let promises = data.map(person => {
+      return fetch(person.species)
+        .then(response => response.json())
+        .then(data => ({
+          ...person,
+          species: data.name,
+          language: data.language
+        }));
+    });
+    return Promise.all(promises);
+  };
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     return (
-        <div>
-          {this.state.people.map(person => {
-            return (
-              <div>
-              <Container name={person.name} homeworld={person.homeworld} species={person.species} population={person.population} />
-              </div>
-            )
-          })}
-        </div>
-          )
+      <div>
+        <Container people={this.state.people} planets={this.state.planets} vehicles={this.state.vehicles}/>
+      </div>
+    );
   }
-  
 }
 
 export default App;
