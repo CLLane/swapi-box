@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Container from "../Container/Container.js";
 import './App.css';
 
 class App extends Component {
@@ -14,34 +15,37 @@ class App extends Component {
   }
   componentDidMount() {
     fetch('https://swapi.co/api/people')
-    .then(response => response.json())
-    .then(data => this.getPersonInfo(data.results))
-    .then(data => this.getPersonPlanet(data))
-    .then(data => this.getPersonSpecies(data))
-    .then(data => this.setState({people: data}))
+      .then(response => response.json())
+      .then(data => this.getPersonInfo(data.results))
+      .then(data => this.getPersonPlanet(data))
+      .then(data => this.getPersonSpecies(data))
+      .then(data => this.setState({people: data}))
+      .catch(error => error.message)
 
-    fetch('https://swapi.co/api/vehicles')
-    .then(response => response.json())
-    .then(data => this.getVehicleInfo(data.results))
-    .then(data => this.setState({vehicles: data}))
+    fetch("https://swapi.co/api/vehicles")
+      .then(response => response.json())
+      .then(data => this.getVehicleInfo(data.results))
+      .then(data => this.setState({ vehicles: data }))
+      .catch(error => error.message);
 
     fetch("https://swapi.co/api/films")
       .then(response => response.json())
       .then(data => data.results)
-      .then(data => this.setState({films: data[Math.floor(Math.random() * Math.floor(7))].opening_crawl}));
+      .then(data =>
+        this.setState({
+          films:
+            data[Math.floor(Math.random() * Math.floor(7))].opening_crawl
+        })
+      )
+      .catch(error => error.message);
 
     fetch("https://swapi.co/api/planets")
-    .then(response => response.json())
-    // .then(data => this.getPlanetInfo(data.results))
-    .then(data => this.getResidents(data.results))
-    .then(data => this.setState({planets: data}))
-    setTimeout(() => {
-      console.log(this.state)
-    }, 9000);
-
+      .then(response => response.json())
+      .then(data => this.getResidents(data.results))
+      .then(data => this.setState({ planets: data }))
+      .catch(error => error.message);
   }
 
-//getResidents map over planets, declare empty array,  map over residents -> fetch each resident .thens, return the planet object, return array of the planet objects
 
 getResidents = (data) => {
   let planets = data.map(planet => {
@@ -60,19 +64,6 @@ getResidents = (data) => {
   return planets
 }
 
-getPlanetInfo = (data) => {
-  let planets = data.map(planet => {
-    return {
-      name: planet.name,
-      terrain: planet.terrain,
-      population: planet.population,
-      climate: planet.climate,
-      residents: planet.residents
-    }
-  })
-  return planets
-}
-  
 getVehicleInfo = (data) => {
   let vehicles = data.map(vehicle => {
     return {
@@ -116,30 +107,20 @@ getVehicleInfo = (data) => {
      return Promise.all(promises)
   }
     
-  //Data needed for film
-  //opening_crawl(data.films.results.opening_crawl)
-
-  //Data needed for people
-  //name(data.people.results.name)
-  //homeworld(data.people.results.homeworld.name(url-another fetch))
-  //species(data.people.results.species.name(url-another fetch))
-  //population of homeworld(data.people.results.homeword.population(url-another fetch))
-
-  //Data needed for Planets
-  //name(data.planets.results.name)
-  //terrain(data.planets.results.terrain)
-  //population(data.planets.results.population)
-  //climate(data.planets.results.climate)
-  //residents(data.planets.results.residents(array of urls that lead to people, return people.name whose numbers match the url num))
-
-  //Data needed for Vehicles
-  //name(data.vehicles.results.name)
-  //model(data.vehicles.results.model)
-  //vehicle_class(data.vehicles.results.vehicle_class)
-  //num passengers(data.vehicles.results.passengers)
 
   render() {
-    return <div>hi</div>
+    console.log(this.state)
+    return (
+        <div>
+          {this.state.people.map(person => {
+            return (
+              <div>
+              <Container name={person.name} homeworld={person.homeworld} species={person.species} population={person.population} />
+              </div>
+            )
+          })}
+        </div>
+          )
   }
   
 }
