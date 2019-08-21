@@ -32,7 +32,7 @@ class App extends Component {
 
     setTimeout(() => {
       console.log(this.state)
-    }, 3000);
+    }, 5000);
   }
   
 getVehicleInfo = (data) => {
