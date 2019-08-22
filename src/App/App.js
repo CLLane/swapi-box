@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Route, NavLink } from 'react-router-dom';
 import Container from "../Container/Container.js";
 import Home from '../Home/Home.js'
+import Landing from '../Landing/Landing.js'
+import CardDisplay from "../CardDisplay/CardDisplay.js";
 import "./App.css";
 
 class App extends Component {
@@ -48,7 +50,7 @@ class App extends Component {
   }
 
   getResidents = data => {
-    let planets = data.map(planet => {
+    let planets = data.map((planet, i) => {
       let array = [];
       planet.residents.forEach(resident => {
         return fetch(resident)
@@ -56,6 +58,7 @@ class App extends Component {
           .then(data => array.push(data.name));
       });
       return {
+        id: i,
         name: planet.name,
         terrain: planet.terrain,
         population: planet.population,
@@ -67,8 +70,9 @@ class App extends Component {
   };
 
   getVehicleInfo = data => {
-    let vehicles = data.map(vehicle => {
+    let vehicles = data.map((vehicle, i) => {
       return {
+        id: i,
         name: vehicle.name,
         model: vehicle.model,
         vehicleClass: vehicle.vehicle_class,
@@ -79,8 +83,9 @@ class App extends Component {
   };
 
   getPersonInfo = data => {
-    let people = data.map(person => {
+    let people = data.map((person, i) => {
       return {
+        id: i,
         name: person.name,
         homeworld: person.homeworld,
         species: person.species[0],
@@ -121,21 +126,32 @@ class App extends Component {
     let people = this.state.people
     let planets = this.state.planets
     let vehicles = this.state.vehicles
-    console.log(this.state);
+    let film = this.state.films
+
         return (
       <div>
-        <h3>{this.state.films}</h3>
         <header>
+          <NavLink to="/landing" className="nav">Intro</NavLink>
           <NavLink to="/people" className="nav">People</NavLink>
           <NavLink to="/planets" className="nav">Planets</NavLink>
           <NavLink to="/vehicles" className="nav">Vehicles</NavLink>
           <NavLink to="/" className="nav">Home</NavLink>
         </header>
+        <Route exact path='/landing' render={ () => <Landing film={ film }/>}/> 
         <Route exact path='/' component={ Home } />
-        <Route exact path='/people' render={ () => <Container data={ people }/>} />
-        <Route exact path='/planets' render={ () => <Container data={planets} />} />
-        <Route exact path='/vehicles' render={ () => <Container data={vehicles}/>} />
-        {/* <Container people={people} planets={planets} vehicles={vehicles}/> */}
+        <Route exact path='/people' children={ () => <Container data={ people } type='people'/>} />
+        <Route exact path='/planets' children={ () => <Container data={planets} type='planets' />} />
+        <Route exact path='/vehicles' render={ () => <Container data={vehicles} type='vehicles' />} />
+        <Route path='/people/:id' render={ ({ match }) => {
+          const {id} = match.params
+          const foundPerson = people.find(person => person.id === parseInt(id))
+          return foundPerson ? <CardDisplay {...foundPerson} /> : 'It does not exist what you are looking for'
+        }} />
+        <Route path='/planets/:id' render={ ({ match }) => {
+          const {id} = match.params
+          const foundPlanet = planets.find(planet => planet.id === parseInt(id))
+          return foundPlanet ? <CardDisplay {...foundPlanet} /> : 'It does not exist what you are looking for'
+        }} />
       </div>
     );
   }
