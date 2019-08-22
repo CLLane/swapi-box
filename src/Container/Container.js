@@ -2,25 +2,15 @@ import React from 'react';
 import Card from '../Card/Card.js'
 import './Container.css';
 
-const Container = ({people, planets, vehicles, films}) => {
+const Container = ({data}) => {
 
-  const peopleInfo = people.map(person => {
-    return <Card key={person.name + Date.now()} name={person.name} homeworld={person.homeworld} species={person.species} population={person.population}/>
-  })
-
-  const planetsInfo = planets.map(planet => {
-    return <Card key={planet.name + Date.now()} name={planet.name} terrain={planet.terrain} population={planet.population} climate={planet.climate} residents={planet.residents}/>
-  })
-
-  const vehiclesInfo = vehicles.map(vehicle => {
-    return <Card key={vehicle.name + Date.now()} name={vehicle.name} model={vehicle.model} vehicleClass={vehicle.vehicleClass} numberOfPassengers={vehicle.numberOfPassengers}/>
+  const allInfo = data.map(attr => {
+    return <Card key={attr.name + Date.now()} name={attr.name} homeworld={attr.homeworld} species={attr.species} population={attr.population} terrain={attr.terrain} climate={attr.climate} residents={attr.residents} model={attr.model} vehicleClass={attr.vehicleClass} numberOfPassengers={attr.numberOfPassengers}/>
   })
 
   return (
     <div>
-      <section>{peopleInfo}</section>
-      <section>{planetsInfo}</section>
-      <section>{vehiclesInfo}</section>
+      <section>{allInfo}</section>
     </div>
   )
 }

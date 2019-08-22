@@ -1,20 +1,6 @@
-import React, { Component } from "react";
-import { Route, NavLink } from 'react-router-dom';
-import Container from "../Container/Container.js";
-import Home from '../Home/Home.js'
-import "./App.css";
+import React, {Component} from 'react';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      planets: [],
-      people: [],
-      vehicles: [],
-      films: ""
-    };
-    console.log('yeehaw', this.state.planets)
-  }
+class fetchCalls extends Component {
   componentDidMount() {
     fetch("https://swapi.co/api/people")
       .then(response => response.json())
@@ -116,29 +102,4 @@ class App extends Component {
     });
     return Promise.all(promises);
   };
-
-  render() {
-    let people = this.state.people
-    let planets = this.state.planets
-    let vehicles = this.state.vehicles
-    console.log(this.state);
-        return (
-      <div>
-        <h3>{this.state.films}</h3>
-        <header>
-          <NavLink to="/people" className="nav">People</NavLink>
-          <NavLink to="/planets" className="nav">Planets</NavLink>
-          <NavLink to="/vehicles" className="nav">Vehicles</NavLink>
-          <NavLink to="/" className="nav">Home</NavLink>
-        </header>
-        <Route exact path='/' component={ Home } />
-        <Route exact path='/people' render={ () => <Container data={ people }/>} />
-        <Route exact path='/planets' render={ () => <Container data={planets} />} />
-        <Route exact path='/vehicles' render={ () => <Container data={vehicles}/>} />
-        {/* <Container people={people} planets={planets} vehicles={vehicles}/> */}
-      </div>
-    );
-  }
 }
-
-export default App;
