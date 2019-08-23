@@ -139,13 +139,20 @@ class App extends Component {
         </header>
         <Route exact path='/landing' render={ () => <Landing film={ film }/>}/> 
         <Route exact path='/' component={ Home } />
-        <Route exact path='/people' children={ () => <Container data={ people } type='people'/>} />
-        <Route exact path='/planets' children={ () => <Container data={planets} type='planets' />} />
+        <Route exact path='/people' render={ () => <Container data={ people } type='people'/>} />
+        <Route exact path='/planets' render={ () => <Container data={planets} type='planets' />} />
         <Route exact path='/vehicles' render={ () => <Container data={vehicles} type='vehicles' />} />
         <Route path='/people/:id' render={ ({ match }) => {
           const {id} = match.params
           const foundPerson = people.find(person => person.id === parseInt(id))
-          return foundPerson ? <CardDisplay {...foundPerson} /> : 'It does not exist what you are looking for'
+          if(foundPerson) {
+          return (
+            <div>
+              <CardDisplay {...foundPerson} /> 
+              <Container data={ people } type='people'/>
+            </div>
+          )
+          } else { return 'It does not exist what you are looking for'}
         }} />
         <Route path='/planets/:id' render={ ({ match }) => {
           const {id} = match.params
