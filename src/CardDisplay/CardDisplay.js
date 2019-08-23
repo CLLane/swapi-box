@@ -1,12 +1,12 @@
 import React from 'react';
-// import './CardDisaply.css';
+import './CardDisplay.css';
 
 const CardDisplay = ({  name, homeworld, species, population, terrain, climate, residents, model, vehicleClass, numberOfPassengers }) => {
 
   return (
-    <div>
+    <div className="single-card">
       {/* <Link to={`${}`} */}
-      <section className="card">
+      <section className="big-card">
         <h1>{name}</h1>
         <p>{homeworld || null}</p>
         <p>{species || null}</p>
