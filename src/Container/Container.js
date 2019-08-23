@@ -27,7 +27,7 @@ const Container = ({data, type}) => {
 
   return (
     <div>
-      <section>{allInfo}</section>
+      <section className="card-container">{allInfo}</section>
     </div>
   )
 }

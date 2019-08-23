@@ -1,0 +1,5 @@
+.card-container {
+  overflow-y: scroll;
+  height: 650px;
+  margin-top: 20px;
+}
