@@ -129,38 +129,106 @@ class App extends Component {
     let film = this.state.films
 
         return (
-      <div>
-        <header>
-          <NavLink to="/landing" className="nav">Intro</NavLink>
-          <NavLink to="/people" className="nav">People</NavLink>
-          <NavLink to="/planets" className="nav">Planets</NavLink>
-          <NavLink to="/vehicles" className="nav">Vehicles</NavLink>
-          <NavLink to="/" className="nav">Home</NavLink>
-        </header>
-        <Route exact path='/landing' render={ () => <Landing film={ film }/>}/> 
-        <Route exact path='/' component={ Home } />
-        <Route exact path='/people' render={ () => <Container data={ people } type='people'/>} />
-        <Route exact path='/planets' render={ () => <Container data={planets} type='planets' />} />
-        <Route exact path='/vehicles' render={ () => <Container data={vehicles} type='vehicles' />} />
-        <Route path='/people/:id' render={ ({ match }) => {
-          const {id} = match.params
-          const foundPerson = people.find(person => person.id === parseInt(id))
-          if(foundPerson) {
-          return (
-            <div>
-              <CardDisplay {...foundPerson} /> 
-              <Container data={ people } type='people'/>
-            </div>
-          )
-          } else { return 'It does not exist what you are looking for'}
-        }} />
-        <Route path='/planets/:id' render={ ({ match }) => {
-          const {id} = match.params
-          const foundPlanet = planets.find(planet => planet.id === parseInt(id))
-          return foundPlanet ? <CardDisplay {...foundPlanet} /> : 'It does not exist what you are looking for'
-        }} />
-      </div>
-    );
+          <div>
+            <header>
+              <NavLink to="/landing" className="nav">
+                Intro
+              </NavLink>
+              <NavLink to="/people" className="nav">
+                People
+              </NavLink>
+              <NavLink to="/planets" className="nav">
+                Planets
+              </NavLink>
+              <NavLink to="/vehicles" className="nav">
+                Vehicles
+              </NavLink>
+              <NavLink to="/" className="nav">
+                Home
+              </NavLink>
+            </header>
+            <Route
+              exact
+              path="/landing"
+              render={() => <Landing film={film} />}
+            />
+            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/people"
+              render={() => <Container data={people} type="people" />}
+            />
+            <Route
+              exact
+              path="/planets"
+              render={() => <Container data={planets} type="planets" />}
+            />
+            <Route
+              exact
+              path="/vehicles"
+              render={() => (
+                <Container data={vehicles} type="vehicles" />
+              )}
+            />
+            <Route
+              path="/people/:id"
+              render={({ match }) => {
+                const { id } = match.params;
+                const foundPerson = people.find(
+                  person => person.id === parseInt(id)
+                );
+                if (foundPerson) {
+                  return (
+                    <div>
+                      <CardDisplay {...foundPerson} />
+                      <Container data={people} type="people" />
+                    </div>
+                  );
+                } else {
+                  return "It does not exist what you are looking for";
+                }
+              }}
+            />
+            <Route
+              path="/planets/:id"
+              render={({ match }) => {
+                const { id } = match.params;
+                const foundPlanet = planets.find(
+                  planet => planet.id === parseInt(id)
+                );
+                if (foundPlanet) {
+                  return (
+                    <div>
+                      <CardDisplay {...foundPlanet} />
+                      <Container data={planets} type="planets" />
+                    </div>
+                  );
+                } else {
+                  return "It does not exist what you are looking for";
+                }
+              }}
+            />
+            <Route
+              path="/vehicles/:id"
+              render={({ match }) => {
+                const { id } = match.params;
+                const foundVehicle = vehicles.find(
+                  planet => planet.id === parseInt(id)
+                );
+                if (foundVehicle) {
+                  return (
+                    <div>
+                      <CardDisplay {...foundVehicle} />
+                      <Container data={vehicles} type="vehicles" />
+                    </div>
+                  );
+                } else {
+                  return "It does not exist what you are looking for";
+                }
+              }}
+            />
+          </div>
+        );
   }
 }
 
