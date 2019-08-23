@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { Route, NavLink } from 'react-router-dom';
 import Container from "../Container/Container.js";
 import Home from '../Home/Home.js'
+import Landing from '../Landing/Landing.js'
+import CardDisplay from "../CardDisplay/CardDisplay.js";
+import Vader from "../Images/DarthVader.svg"
+import Xwing from "../Images/Xwing.svg"
+import Planet from "../Images/Planet.svg"
+import HomeIcon from "../Images/HomeIcon.svg"
+import StarWarsIcon from "../Images/StarWarsIcon.svg"
 import "./App.css";
 
 class App extends Component {
@@ -48,7 +55,7 @@ class App extends Component {
   }
 
   getResidents = data => {
-    let planets = data.map(planet => {
+    let planets = data.map((planet, i) => {
       let array = [];
       planet.residents.forEach(resident => {
         return fetch(resident)
@@ -56,6 +63,7 @@ class App extends Component {
           .then(data => array.push(data.name));
       });
       return {
+        id: i,
         name: planet.name,
         terrain: planet.terrain,
         population: planet.population,
@@ -67,8 +75,9 @@ class App extends Component {
   };
 
   getVehicleInfo = data => {
-    let vehicles = data.map(vehicle => {
+    let vehicles = data.map((vehicle, i) => {
       return {
+        id: i,
         name: vehicle.name,
         model: vehicle.model,
         vehicleClass: vehicle.vehicle_class,
@@ -79,8 +88,9 @@ class App extends Component {
   };
 
   getPersonInfo = data => {
-    let people = data.map(person => {
+    let people = data.map((person, i) => {
       return {
+        id: i,
         name: person.name,
         homeworld: person.homeworld,
         species: person.species[0],
@@ -121,23 +131,137 @@ class App extends Component {
     let people = this.state.people
     let planets = this.state.planets
     let vehicles = this.state.vehicles
-    console.log(this.state);
+    let film = this.state.films
+
         return (
-      <div>
-        <h3>{this.state.films}</h3>
-        <header>
-          <NavLink to="/people" className="nav">People</NavLink>
-          <NavLink to="/planets" className="nav">Planets</NavLink>
-          <NavLink to="/vehicles" className="nav">Vehicles</NavLink>
-          <NavLink to="/" className="nav">Home</NavLink>
-        </header>
-        <Route exact path='/' component={ Home } />
-        <Route exact path='/people' render={ () => <Container data={ people }/>} />
-        <Route exact path='/planets' render={ () => <Container data={planets} />} />
-        <Route exact path='/vehicles' render={ () => <Container data={vehicles}/>} />
-        {/* <Container people={people} planets={planets} vehicles={vehicles}/> */}
-      </div>
-    );
+          <div>
+            <header>
+              <NavLink to="/landing" className="nav">
+                <img
+                  src={StarWarsIcon}
+                  alt="characters icon"
+                  className="character-icon"
+                />
+                Intro
+              </NavLink>
+
+              <NavLink to="/people" className="nav">
+                <img
+                  src={Vader}
+                  alt="characters icon"
+                  className="character-icon"
+                />
+                Characters
+              </NavLink>
+
+              <NavLink to="/planets" className="nav">
+                <img
+                  src={Planet}
+                  alt="characters icon"
+                  className="character-icon"
+                />
+                Planets
+              </NavLink>
+
+              <NavLink to="/vehicles" className="nav">
+                <img
+                  src={Xwing}
+                  alt="characters icon"
+                  className="character-icon"
+                />
+                Vehicles
+              </NavLink>
+              <NavLink to="/" className="nav">
+                <img
+                  src={HomeIcon}
+                  alt="characters icon"
+                  className="character-icon"
+                />
+                Home
+              </NavLink>
+            </header>
+            <Route
+              exact
+              path="/landing"
+              render={() => <Landing film={film} />}
+            />
+            <Route exact path="/" component={Home} />
+            <Route
+              exact
+              path="/people"
+              render={() => <Container data={people} type="people" />}
+            />
+            <Route
+              exact
+              path="/planets"
+              render={() => <Container data={planets} type="planets" />}
+            />
+            <Route
+              exact
+              path="/vehicles"
+              render={() => (
+                <Container data={vehicles} type="vehicles" />
+              )}
+            />
+            <Route
+              path="/people/:id"
+              render={({ match }) => {
+                const { id } = match.params;
+                const foundPerson = people.find(
+                  person => person.id === parseInt(id)
+                );
+                if (foundPerson) {
+                  return (
+                    <div>
+                      <CardDisplay {...foundPerson} />
+                      <Container data={people} type="people" />
+                    </div>
+                  );
+                } else {
+                  return "It does not exist what you are looking for";
+                }
+              }}
+            />
+            <Route
+              path="/planets/:id"
+              render={({ match }) => {
+                const { id } = match.params;
+                const foundPlanet = planets.find(
+                  planet => planet.id === parseInt(id)
+                );
+                if (foundPlanet) {
+                  return (
+                    <div>
+                      <CardDisplay {...foundPlanet} />
+                      <Container data={planets} type="planets" />
+                    </div>
+                  );
+                } else {
+                  return "It does not exist what you are looking for";
+                }
+              }}
+            />
+            <Route
+              path="/vehicles/:id"
+              render={({ match }) => {
+                const { id } = match.params;
+                const foundVehicle = vehicles.find(
+                  planet => planet.id === parseInt(id)
+                );
+                if (foundVehicle) {
+                  return (
+                    <div>
+                      <CardDisplay {...foundVehicle} />
+                      <Container data={vehicles} type="vehicles" />
+                    </div>
+                  );
+                } else {
+                  return "It does not exist what you are looking for";
+                }
+              }}
+            />
+          </div>
+        );
   }
 }
 

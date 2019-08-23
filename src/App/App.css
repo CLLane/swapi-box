@@ -1,19 +1,21 @@
-.App {
-  text-align: center;
+header {
+  width: 100vw;
+  height: 15vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5)
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav {
+  text-decoration: none;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+.character-icon {
+  width:  10vw;
+  height: 10vh;
 }
-

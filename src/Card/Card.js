@@ -1,10 +1,11 @@
 import React from 'react';
 import './Card.css';
 
-const Card = ({ name, homeworld, species, population, terrain, climate, residents, model, vehicleClass, numberOfPassengers }) => {
+const Card = ({ name, homeworld, species, population, terrain, climate, residents, model, vehicleClass, numberOfPassengers}) => {
 
   return (
     <div>
+    {/* <Link to={`${}`} */}
     <section className="card">
       <h1>{name}</h1>
       <p>{homeworld || null}</p>
