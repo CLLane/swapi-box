@@ -4,6 +4,11 @@ import Container from "../Container/Container.js";
 import Home from '../Home/Home.js'
 import Landing from '../Landing/Landing.js'
 import CardDisplay from "../CardDisplay/CardDisplay.js";
+import Vader from "../Images/DarthVader.svg"
+import Xwing from "../Images/Xwing.svg"
+import Planet from "../Images/Planet.svg"
+import HomeIcon from "../Images/HomeIcon.svg"
+import StarWarsIcon from "../Images/StarWarsIcon.svg"
 import "./App.css";
 
 class App extends Component {
@@ -132,18 +137,46 @@ class App extends Component {
           <div>
             <header>
               <NavLink to="/landing" className="nav">
+                <img
+                  src={StarWarsIcon}
+                  alt="characters icon"
+                  className="character-icon"
+                />
                 Intro
               </NavLink>
+
               <NavLink to="/people" className="nav">
-                People
+                <img
+                  src={Vader}
+                  alt="characters icon"
+                  className="character-icon"
+                />
+                Characters
               </NavLink>
+
               <NavLink to="/planets" className="nav">
+                <img
+                  src={Planet}
+                  alt="characters icon"
+                  className="character-icon"
+                />
                 Planets
               </NavLink>
+
               <NavLink to="/vehicles" className="nav">
+                <img
+                  src={Xwing}
+                  alt="characters icon"
+                  className="character-icon"
+                />
                 Vehicles
               </NavLink>
               <NavLink to="/" className="nav">
+                <img
+                  src={HomeIcon}
+                  alt="characters icon"
+                  className="character-icon"
+                />
                 Home
               </NavLink>
             </header>
