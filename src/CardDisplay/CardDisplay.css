@@ -9,7 +9,7 @@
     inset 0 0 1.5vw  0.3vw rgb(250, 238, 124),
     inset 0 0 0.4vw  0.1vw #FFE81F,
     inset 0 0 0.5vw  0.1vw #fff7f7;
-    border-radius: 6px;
+  border-radius: 8px;
   width: 700px;
   height: 500px;
   text-align: center;

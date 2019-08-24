@@ -14,7 +14,8 @@ header {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  /* background-color: rgba(0, 0, 0, 0.5) */
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, .5)
 }
 
 .nav {
@@ -23,7 +24,10 @@ header {
   display: flex;
   flex-direction: column;
   font-size: 15px;
-  color: #fff;
+  color: white;
+  font-weight: 800;
+}
+ .nav:hover {
   text-shadow:
     0 0 5px #fff,
     0 0 10px #fff,
@@ -33,6 +37,7 @@ header {
     0 0 90px #FFE81F,
     0 0 100px #FFE81F,
     0 0 150px #FFE81F;
+    color: black;
 }
 
 .character-icon {
