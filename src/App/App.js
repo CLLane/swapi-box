@@ -18,7 +18,8 @@ class App extends Component {
       planets: [],
       people: [],
       vehicles: [],
-      films: ""
+      films: "", 
+      favorites: []
     };
     console.log("yeehaw", this.state.planets);
   }
@@ -127,12 +128,19 @@ class App extends Component {
     return Promise.all(promises);
   };
 
-  render() {
-    let people = this.state.people;
-    let planets = this.state.planets;
-    let vehicles = this.state.vehicles;
-    let film = this.state.films;
+  toggleFav = (id, type) => {
+    const foundCard = this.state[`${type}`].find(card => {
+      return card.id === id-1
+    })
+    foundCard.isFavorite = !foundCard.isFavorite
+    this.setState({
+      favorites: [...this.state.favorites, foundCard]
+    })
+    console.log('state', this.state)
+  }
 
+  render() {
+    let { people, planets, vehicles, film } = this.state
     return (
       <div>
         <header>
@@ -177,17 +185,17 @@ class App extends Component {
         <Route
           exact
           path="/people"
-          render={() => <Container data={people} type="people" />}
+          render={() => <Container data={people} type="people" toggleFav={this.toggleFav}/>}
         />
         <Route
           exact
           path="/planets"
-          render={() => <Container data={planets} type="planets" />}
+          render={() => <Container data={planets} type="planets" toggleFav={this.toggleFav}/>}
         />
         <Route
           exact
           path="/vehicles"
-          render={() => <Container data={vehicles} type="vehicles" />}
+          render={() => <Container data={vehicles} type="vehicles" toggleFav={this.toggleFav}/>}
         />
         <Route
           path="/people/:id"
@@ -200,7 +208,7 @@ class App extends Component {
               return (
                 <div>
                   <CardDisplay {...foundPerson} />
-                  <Container data={people} type="people" />
+                  <Container data={people} type="people" toggleFav={this.toggleFav} />
                 </div>
               );
             } else {
@@ -219,7 +227,7 @@ class App extends Component {
               return (
                 <div>
                   <CardDisplay {...foundPlanet} />
-                  <Container data={planets} type="planets" />
+                  <Container data={planets} type="planets" toggleFav={this.toggleFav} />
                 </div>
               );
             } else {
@@ -238,7 +246,7 @@ class App extends Component {
               return (
                 <div>
                   <CardDisplay {...foundVehicle} />
-                  <Container data={vehicles} type="vehicles" />
+                  <Container data={vehicles} type="vehicles" toggleFav={this.toggleFav} />
                 </div>
               );
             } else {
