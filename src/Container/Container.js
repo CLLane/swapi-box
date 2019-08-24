@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import Card from '../Card/Card.js'
 import './Container.css';
 
-const Container = ({data, type}) => {
+const Container = ({data, type, toggleFav}) => {
   const allInfo = data.map((attr, i) => {
     return (
     <NavLink to={`/${type}/${attr.id}`} key={attr.id}>
@@ -20,6 +20,9 @@ const Container = ({data, type}) => {
     model={attr.model} 
     vehicleClass={attr.vehicleClass} 
     numberOfPassengers={attr.numberOfPassengers}
+    isFavorite={attr.isFavorite}
+    toggleFav={toggleFav}
+    type={type}
     />
     </NavLink>
     )
