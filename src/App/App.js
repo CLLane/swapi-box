@@ -9,6 +9,7 @@ import Xwing from "../Images/Xwing.svg";
 import Planet from "../Images/Planet.svg";
 import HomeIcon from "../Images/HomeIcon.svg";
 import StarWarsIcon from "../Images/StarWarsIcon.svg";
+import favoriteIcon from "../Images/favoriteIcon.svg";
 import "./App.css";
 
 class App extends Component {
@@ -140,7 +141,7 @@ class App extends Component {
   }
 
   render() {
-    let { people, planets, vehicles, film } = this.state
+    let { people, planets, vehicles, film, favorites } = this.state
     return (
       <div>
         <header>
@@ -179,6 +180,14 @@ class App extends Component {
             />
             Home
           </NavLink>
+          <NavLink to="/favorites" className="nav">
+            <img
+              src={favoriteIcon}
+              alt="favorites icon"
+              className="character-icon"
+            />
+            Favorites
+          </NavLink>
         </header>
         <Route exact path="/landing" render={() => <Landing film={film} />} />
         <Route exact path="/" component={Home} />
@@ -196,6 +205,11 @@ class App extends Component {
           exact
           path="/vehicles"
           render={() => <Container data={vehicles} type="vehicles" toggleFav={this.toggleFav}/>}
+        />
+        <Route
+          exact
+          path="/favorites"
+          render={() => <Container data={favorites} type="favorites" toggleFav={this.toggleFav}/>}
         />
         <Route
           path="/people/:id"
