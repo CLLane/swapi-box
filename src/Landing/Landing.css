@@ -19,22 +19,14 @@
   position: relative;
   top: -100px;
   transform-origin: 50% 100%;
-  animation: crawl 45s linear;
+  animation: crawl 75s linear;
   animation-iteration-count: infinite;
 }
 
 
-.crawl-text {
-  /* position: relative;
-  top: -100px;
-  transform-origin: 50% 100%;
-  animation: crawl 45s linear;
-  animation-iteration-count: infinite; */
-}
-
 @keyframes crawl {
   0% {
-    top: 0;
+    top: 650px;
     transform: rotateX(20deg) translateZ(0);
   }
 
