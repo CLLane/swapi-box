@@ -1,22 +1,25 @@
 .card {
-    box-shadow:
-    0 0 0.1vw  0.3vw #fff7f7,   
-    0 0 0.4vw  0.4vw #FFE81F, 
-    0 0   4vw  0.3vw rgb(250, 238, 124),
-    inset 0 0 1.5vw  0.3vw rgb(250, 238, 124),
-    inset 0 0 0.4vw  0.1vw #FFE81F,
-    inset 0 0 0.5vw  0.1vw #fff7f7;
-    border-radius: 6px;
+  border-radius: 8px;
   width: 300px;
   height: 200px;
   text-align: center;
   color: white;
-  text-decoration: none;
   margin-left: 20px;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, .5)
+}
+
+.card:hover {
+     box-shadow:
+    0 0 0.1vw  0.3vw #fff7f7,   
+    0 0 0.4vw  0.4vw #FFE81F, 
+    0 0   1.5vw  0.3vw #faee7c,
+    inset 0 0 1.5vw  0.3vw rgb(250, 238, 124),
+    inset 0 0 0.4vw  0.1vw #FFE81F,
+    inset 0 0 0.5vw  0.1vw #fff7f7;
+    background-color: rgba(0, 0, 0, .9)
 }
 
 h1 {
   padding-top: 50px;
 }
-
-

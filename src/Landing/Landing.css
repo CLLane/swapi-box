@@ -1,0 +1,37 @@
+
+
+.crawler-section {
+  display: flex;
+  justify-content: center;
+  height: 1200px;
+  color: #feda4a;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 500%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+  text-align: justify;
+  overflow: hidden;
+  perspective: 400px;
+}
+
+.crawler-div {
+  position: relative;
+  top: -100px;
+  transform-origin: 50% 100%;
+  animation: crawl 75s linear;
+  animation-iteration-count: infinite;
+}
+
+
+@keyframes crawl {
+  0% {
+    top: 650px;
+    transform: rotateX(20deg) translateZ(0);
+  }
+
+  100% {
+    top: -6000px;
+    transform: rotateX(25deg) translateZ(-2500px);
+  }
+}
