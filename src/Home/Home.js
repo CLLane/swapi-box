@@ -48,7 +48,7 @@ class Home extends Component {
         </div>
       );
     }
-    if(this.state.count < 20) {
+    if(this.state.count < 15) {
       return (
         <section className="game-container">
           <img onMouseOver={event => this.explosion(event)} src={tieFighter} alt="" className="baddy-1"></img>

@@ -55,8 +55,8 @@ class App extends Component {
       .then(data => this.setState({ planets: data }))
       .catch(error => error.message);
 
-       if (localStorage.getItem('favorites')) {
-      const favorites = JSON.parse(localStorage.getItem('favorites'));
+       if (localStorage.getItem('favoriteArray')) {
+      const favorites = JSON.parse(localStorage.getItem('favoriteArray'));
       this.setState({ favorites });
   }
 }
@@ -151,7 +151,7 @@ class App extends Component {
   };
 
   saveToLocalStorage = favorites => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    localStorage.setItem("favoriteArray", JSON.stringify(favorites));
   };
 
   render() {
