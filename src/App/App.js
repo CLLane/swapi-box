@@ -5,7 +5,7 @@ import Home from "../Home/Home.js";
 import Landing from "../Landing/Landing.js";
 import CardDisplay from "../CardDisplay/CardDisplay.js";
 import Vader from "../Images/DarthVader.svg";
-import Xwing from "../Images/Xwing.svg";
+import deathStar from "../Images/DeathStar.svg";
 import Planet from "../Images/Planet.svg";
 import HomeIcon from "../Images/HomeIcon.svg";
 import StarWarsIcon from "../Images/StarWarsIcon.svg";
@@ -141,7 +141,7 @@ class App extends Component {
   }
 
   render() {
-    let { people, planets, vehicles, film, favorites } = this.state
+    let { people, planets, vehicles, films, favorites } = this.state
     return (
       <div>
         <header>
@@ -169,7 +169,7 @@ class App extends Component {
           </NavLink>
 
           <NavLink to="/vehicles" className="nav">
-            <img src={Xwing} alt="characters icon" className="character-icon" />
+            <img src={deathStar} alt="characters icon" className="character-icon" />
             Vehicles
           </NavLink>
           <NavLink to="/" className="nav">
@@ -189,7 +189,7 @@ class App extends Component {
             Favorites
           </NavLink>
         </header>
-        <Route exact path="/landing" render={() => <Landing film={film} />} />
+        <Route exact path="/landing" render={() => <Landing film={films} />} />
         <Route exact path="/" component={Home} />
         <Route
           exact
