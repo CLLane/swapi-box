@@ -1,6 +1,6 @@
 .single-card {
   float: right;
-  margin-right: 15%;
+  margin-right: 10%;
   margin-top: 50px;
   box-shadow:
     0 0 0.1vw  0.3vw #fff7f7,   
@@ -10,26 +10,29 @@
     inset 0 0 0.4vw  0.1vw #FFE81F,
     inset 0 0 0.5vw  0.1vw #fff7f7;
   border-radius: 8px;
-  width: 700px;
-  height: 500px;
+  width: 60%;
+  height: 100%;
   text-align: center;
   color: white;
-  text-decoration: none;
+  padding-bottom: 20px;
+  background-color: rgba(0, 0, 0, .5)
 }
 
 .big-card-h1 {
   font-size: 70px;
   margin: 0;
   padding-bottom: 15px;
-  padding-top: 15px;
+  padding-top: 25px;
 }
 
 .big-card-labels {
+  color: rgb(250, 238, 124);
   margin: 0;
   font-size: 30px;
 }
 
 .big-card-values {
+  color: white;
   font-size: 20px;
   margin: 0;
   padding-top: 10px;
