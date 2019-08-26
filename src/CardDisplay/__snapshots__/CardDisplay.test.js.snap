@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardDisplay should match the snapshot with all data passed in correctly 1`] = `
+<div
+  className="single-card"
+>
+  <section
+    className="big-card"
+  >
+    <h1
+      className="big-card-h1"
+    >
+      Luke Skywalker
+    </h1>
+    <h4
+      className="big-card-labels"
+    >
+      Homeworld: 
+      <p
+        className="big-card-values"
+      >
+        Tatooine
+      </p>
+    </h4>
+    <h4
+      className="big-card-labels"
+    >
+      Species: 
+      <p
+        className="big-card-values"
+      >
+        Human
+      </p>
+    </h4>
+    <h4
+      className="big-card-labels"
+    >
+      Population: 
+      <p
+        className="big-card-values"
+      >
+        200000
+      </p>
+    </h4>
+    <h4
+      className="big-card-labels"
+    >
+      Terrain: 
+      <p
+        className="big-card-values"
+      >
+        grasslands, mountains
+      </p>
+    </h4>
+    <h4
+      className="big-card-labels"
+    >
+      Climate: 
+      <p
+        className="big-card-values"
+      >
+        temperate
+      </p>
+    </h4>
+    <h4
+      className="big-card-labels"
+    >
+      Model: 
+      <p
+        className="big-card-values"
+      >
+        Digger Crawler
+      </p>
+    </h4>
+    <h4
+      className="big-card-labels"
+    >
+      Vehicle Class: 
+      <p
+        className="big-card-values"
+      >
+        wheeled
+      </p>
+    </h4>
+    <h4
+      className="big-card-labels"
+    >
+      Number of Passengers: 
+      <p
+        className="big-card-values"
+      >
+        30
+      </p>
+    </h4>
+  </section>
+</div>
+`;
