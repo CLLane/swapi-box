@@ -159,6 +159,14 @@ class App extends Component {
     return (
       <div>
         <header>
+        <NavLink to="/" className="nav">
+            <img
+              src={HomeIcon}
+              alt="characters icon"
+              className="character-icon"
+            />
+            Home
+          </NavLink>
           <NavLink to="/landing" className="nav">
             <img
               src={StarWarsIcon}
@@ -186,14 +194,6 @@ class App extends Component {
               className="character-icon"
             />
             Vehicles
-          </NavLink>
-          <NavLink to="/" className="nav">
-            <img
-              src={HomeIcon}
-              alt="characters icon"
-              className="character-icon"
-            />
-            Home
           </NavLink>
           <NavLink to="/favorites" className="nav">
             <img
