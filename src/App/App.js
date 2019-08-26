@@ -199,6 +199,7 @@ class App extends Component {
               className="character-icon"
             />
             Favorites
+            <span>{this.state.favorites.length}</span>
           </NavLink>
         </header>
         <Route exact path="/" component={Home} />
