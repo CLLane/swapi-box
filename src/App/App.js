@@ -55,8 +55,8 @@ class App extends Component {
       .then(data => this.setState({ planets: data }))
       .catch(error => error.message);
 
-       if (localStorage.getItem('favoriteArray')) {
-      const favorites = JSON.parse(localStorage.getItem('favoriteArray'));
+       if (localStorage.getItem('favorites')) {
+      const favorites = JSON.parse(localStorage.getItem('favorites'));
       this.setState({ favorites });
   }
 }
@@ -143,15 +143,12 @@ class App extends Component {
     this.setState(
       {
         favorites: [...this.state.favorites, foundCard]
-      },
-      () => {
-        console.log("this.state :", this.state);
       }
     );
   };
 
   saveToLocalStorage = favorites => {
-    localStorage.setItem("favoriteArray", JSON.stringify(favorites));
+    localStorage.setItem("favorites", JSON.stringify(favorites));
   };
 
   render() {
@@ -253,7 +250,7 @@ class App extends Component {
             const foundPerson = people.find(
               person => person.id === parseInt(id)
             );
-            if (foundPerson) {
+            
               return (
                 <div>
                   <CardDisplay {...foundPerson} />
@@ -264,9 +261,7 @@ class App extends Component {
                   />
                 </div>
               );
-            } else {
-              return "It does not exist what you are looking for";
-            }
+          
           }}
         />
         <Route
@@ -276,7 +271,7 @@ class App extends Component {
             const foundPlanet = planets.find(
               planet => planet.id === parseInt(id)
             );
-            if (foundPlanet) {
+            
               return (
                 <div>
                   <CardDisplay {...foundPlanet} />
@@ -287,9 +282,7 @@ class App extends Component {
                   />
                 </div>
               );
-            } else {
-              return "It does not exist what you are looking for";
-            }
+          
           }}
         />
         <Route
@@ -299,7 +292,7 @@ class App extends Component {
             const foundVehicle = vehicles.find(
               planet => planet.id === parseInt(id)
             );
-            if (foundVehicle) {
+          
               return (
                 <div>
                   <CardDisplay {...foundVehicle} />
@@ -310,14 +303,34 @@ class App extends Component {
                   />
                 </div>
               );
-            } else {
-              return "It does not exist what you are looking for";
-            }
+          
+          }}
+        />
+        <Route
+          path="/favorites/:id"
+          render={({ match }) => {
+            const { id } = match.params;
+            const foundFavorite = favorites.find(
+              planet => planet.id === parseInt(id)
+            );
+  
+              return (
+                <div>
+                  <CardDisplay {...foundFavorite} />
+                  <Container
+                    data={favorites}
+                    type="favorites"
+                    toggleFav={this.toggleFav}
+                  />
+                </div>
+              );
+          
           }}
         />
       </div>
     );
   }
+  
 }
 
 export default App;
