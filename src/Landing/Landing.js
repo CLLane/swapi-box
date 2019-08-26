@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Landing.css'
 import { NavLink } from 'react-router-dom';
 
@@ -19,3 +20,7 @@ const Landing = ({film}) => {
 
 
 export default Landing;
+
+Landing.propTypes = {
+  film: PropTypes.array,
+}

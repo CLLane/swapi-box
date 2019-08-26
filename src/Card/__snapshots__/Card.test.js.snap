@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should match the snapshot if the card is favorited 1`] = `
+<div>
+  <section
+    className="card"
+  >
+    <img
+      alt=""
+      className="favorite-img"
+      onClick={[Function]}
+      src="favorite.svg"
+    />
+    <h1
+      className="small-cards-h1"
+    >
+      Luke Skywalker
+    </h1>
+    <h4
+      className="small-card-labels"
+    >
+      Homeworld: 
+      Tatooine
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Species: 
+      Human
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Population: 
+      200000
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Terrain: 
+      grasslands, mountains
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Climate: 
+      temperate
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Model: 
+      Digger Crawler
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Vehicle Class: 
+      wheeled
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Number of Passengers: 
+      30
+    </h4>
+  </section>
+</div>
+`;
+
+exports[`Card should match the snapshot with all data passed in correctly 1`] = `
+<div>
+  <section
+    className="card"
+  >
+    <img
+      alt=""
+      className="favorite-img"
+      onClick={[Function]}
+      src="isNotFavorite.svg"
+    />
+    <h1
+      className="small-cards-h1"
+    >
+      Luke Skywalker
+    </h1>
+    <h4
+      className="small-card-labels"
+    >
+      Homeworld: 
+      Tatooine
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Species: 
+      Human
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Population: 
+      200000
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Terrain: 
+      grasslands, mountains
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Climate: 
+      temperate
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Model: 
+      Digger Crawler
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Vehicle Class: 
+      wheeled
+    </h4>
+    <h4
+      className="small-card-labels"
+    >
+      Number of Passengers: 
+      30
+    </h4>
+  </section>
+</div>
+`;

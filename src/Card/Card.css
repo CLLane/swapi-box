@@ -1,7 +1,7 @@
 .card {
   border-radius: 8px;
   width: 300px;
-  height: 250px;
+  padding-bottom: 20px;
   text-align: center;
   color: white;
   margin-left: 20px;
@@ -21,11 +21,16 @@
     background-color: rgba(0, 0, 0, .9)
 }
 
-h1 {
-  padding-top: 50px;
+.small-cards-h1 {
+  padding-top: 10px;
 }
 
 .favorite-img {
   height: 40px;
   width: 40px;
+  float: right;
+}
+
+.small-card-labels {
+  margin-bottom: 15px;
 }
