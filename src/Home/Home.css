@@ -1,0 +1,186 @@
+.game-container {
+  cursor: url("../Images/Cursor.svg"), auto;
+  width: 100vw;
+  height: 120vh;
+}
+
+.baddy-1 {
+  margin-left: 0px;
+  transform-origin: 0%;
+  animation: baddy 4s linear;
+  animation-iteration-count: infinite;
+  z-index: 1;
+}
+.baddy-2 {
+  margin-left: 50px;
+  animation: baddy 6s linear;
+  animation-iteration-count: infinite;
+  z-index: 2;
+}
+.baddy-3 {
+  margin-left: 100px;
+  animation: baddy 8s linear;
+  animation-iteration-count: infinite;
+  z-index: 3;
+}
+.baddy-4 {
+  margin-left: 150px;
+  animation: baddy 5s linear;
+  animation-iteration-count: infinite;
+  z-index: 4;
+}
+.baddy-5 {
+  margin-left: 200px;
+  animation: baddy 7s linear;
+  animation-iteration-count: infinite;
+  z-index: 5;
+}
+.baddy-6 {
+  margin-left: 250px;
+  animation: baddy 9s linear;
+  animation-iteration-count: infinite;
+  z-index: 6;
+}
+.baddy-7 {
+  margin-left: 300px;
+  animation: baddy 4s linear;
+  animation-iteration-count: infinite;
+  z-index: 7;
+}
+.baddy-8 {
+  margin-left: 350px;
+  animation: baddy 6s linear;
+  animation-iteration-count: infinite;
+  z-index: 8;
+}
+.baddy-9 {
+  margin-left: 400px;
+  animation: baddy 8s linear;
+  animation-iteration-count: infinite;
+}
+.baddy-10 {
+  margin-left: 500px;
+  animation: baddy 4s linear;
+  animation-iteration-count: infinite;
+}
+.baddy-11 {
+  margin-left: 550px;
+  animation: baddy 5s linear;
+  animation-iteration-count: infinite;
+}
+.baddy-12 {
+  margin-left: 25px;
+  animation: baddy 6s linear;
+  animation-iteration-count: infinite;
+}
+.baddy-13 {
+  margin-left: 75px;
+  animation: baddy 7s linear;
+  animation-iteration-count: infinite;
+}
+.baddy-14 {
+  margin-left: 125px;
+  animation: baddy 8s linear;
+  animation-iteration-count: infinite;
+}
+.baddy-15 {
+  margin-left: 175px;
+  animation: baddy 9s linear;
+  animation-iteration-count: infinite;
+}
+.baddy-16 {
+  margin-left: 225px;
+  animation: baddy 4s linear;
+  animation-iteration-count: infinite;
+}
+.baddy-17 {
+  margin-left: 275px;
+  animation: baddy 5s linear;
+  animation-iteration-count: infinite;
+}
+.baddy-18 {
+  margin-left: 325px;
+  animation: baddy 6s linear;
+  animation-iteration-count: infinite;
+}
+.baddy-19 {
+  margin-left: 375px;
+  animation: baddy 7s linear;
+  animation-iteration-count: infinite;
+}
+.baddy-20 {
+  margin-left: 425px;
+  animation: baddy 8s linear;
+  animation-iteration-count: infinite;
+}
+
+
+
+.baddy-1:hover,
+.baddy-2:hover,
+.baddy-3:hover,
+.baddy-4:hover,
+.baddy-5:hover,
+.baddy-6:hover,
+.baddy-7:hover,
+.baddy-8:hover,
+.baddy-9:hover,
+.baddy-10:hover,
+.baddy-11:hover,
+.baddy-12:hover,
+.baddy-13:hover,
+.baddy-14:hover,
+.baddy-15:hover,
+.baddy-16:hover,
+.baddy-17:hover,
+.baddy-18:hover,
+.baddy-19:hover,
+.baddy-20:hover{
+  cursor: url("../Images/Explosion.svg"), auto;
+}
+
+.dead {
+  visibility: hidden;
+}
+
+.game-prompt{
+  background-color: rgba(0, 0, 0, .75);
+  color: #FFE81F;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px;
+}
+button {
+  border: 2px rgb(255, 255, 255, .50) solid;
+  background-color: rgba(0, 0, 0, .75);
+  color: white;
+  border-radius: 8px;
+}
+button:hover {
+   text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px #FFE81F,
+    0 0 80px #FFE81F,
+    0 0 90px #FFE81F,
+    0 0 100px #FFE81F,
+    0 0 150px #FFE81F;
+  background-color: rgb(255, 232, 30, .85);
+  transform: scale(1.1);
+  color: black;
+}
+
+@keyframes baddy {
+   0% {
+    visibility: hidden;
+    top: 1000px;
+    transform: rotateX(20deg) translateZ(0);
+  }
+
+  100% {
+    top: -6000px;
+    transform: rotateX(25deg) translateZ(-2500px);
+  }
+}

@@ -5,7 +5,7 @@ import Home from "../Home/Home.js";
 import Landing from "../Landing/Landing.js";
 import CardDisplay from "../CardDisplay/CardDisplay.js";
 import Vader from "../Images/DarthVader.svg";
-import Xwing from "../Images/Xwing.svg";
+import deathStar from "../Images/DeathStar.svg";
 import Planet from "../Images/Planet.svg";
 import HomeIcon from "../Images/HomeIcon.svg";
 import StarWarsIcon from "../Images/StarWarsIcon.svg";
@@ -19,11 +19,11 @@ class App extends Component {
       planets: [],
       people: [],
       vehicles: [],
-      films: "", 
+      films: "",
       favorites: []
     };
-    console.log("yeehaw", this.state.planets);
   }
+
   componentDidMount() {
     fetch("https://swapi.co/api/people")
       .then(response => response.json())
@@ -54,7 +54,12 @@ class App extends Component {
       .then(data => this.getResidents(data.results))
       .then(data => this.setState({ planets: data }))
       .catch(error => error.message);
+
+       if (localStorage.getItem('favoriteArray')) {
+      const favorites = JSON.parse(localStorage.getItem('favoriteArray'));
+      this.setState({ favorites });
   }
+}
 
   getResidents = data => {
     let planets = data.map((planet, i) => {
@@ -131,17 +136,26 @@ class App extends Component {
 
   toggleFav = (id, type) => {
     const foundCard = this.state[`${type}`].find(card => {
-      return card.id === id-1
-    })
-    foundCard.isFavorite = !foundCard.isFavorite
-    this.setState({
-      favorites: [...this.state.favorites, foundCard]
-    })
-    console.log('state', this.state)
-  }
+      return card.id === id - 1;
+    });
+    foundCard.isFavorite = !foundCard.isFavorite;
+    this.saveToLocalStorage([...this.state.favorites, foundCard]);
+    this.setState(
+      {
+        favorites: [...this.state.favorites, foundCard]
+      },
+      () => {
+        console.log("this.state :", this.state);
+      }
+    );
+  };
+
+  saveToLocalStorage = favorites => {
+    localStorage.setItem("favoriteArray", JSON.stringify(favorites));
+  };
 
   render() {
-    let { people, planets, vehicles, film, favorites } = this.state
+    let { people, planets, vehicles, films, favorites } = this.state;
     return (
       <div>
         <header>
@@ -153,12 +167,10 @@ class App extends Component {
             />
             Intro
           </NavLink>
-
           <NavLink to="/people" className="nav">
             <img src={Vader} alt="characters icon" className="character-icon" />
             Characters
           </NavLink>
-
           <NavLink to="/planets" className="nav">
             <img
               src={Planet}
@@ -167,9 +179,12 @@ class App extends Component {
             />
             Planets
           </NavLink>
-
           <NavLink to="/vehicles" className="nav">
-            <img src={Xwing} alt="characters icon" className="character-icon" />
+            <img
+              src={deathStar}
+              alt="characters icon"
+              className="character-icon"
+            />
             Vehicles
           </NavLink>
           <NavLink to="/" className="nav">
@@ -189,27 +204,47 @@ class App extends Component {
             Favorites
           </NavLink>
         </header>
-        <Route exact path="/landing" render={() => <Landing film={film} />} />
         <Route exact path="/" component={Home} />
+        <Route exact path="/landing" render={() => <Landing film={films} />} />
         <Route
           exact
           path="/people"
-          render={() => <Container data={people} type="people" toggleFav={this.toggleFav}/>}
+          render={() => (
+            <Container data={people} type="people" toggleFav={this.toggleFav} />
+          )}
         />
         <Route
           exact
           path="/planets"
-          render={() => <Container data={planets} type="planets" toggleFav={this.toggleFav}/>}
+          render={() => (
+            <Container
+              data={planets}
+              type="planets"
+              toggleFav={this.toggleFav}
+            />
+          )}
         />
         <Route
           exact
           path="/vehicles"
-          render={() => <Container data={vehicles} type="vehicles" toggleFav={this.toggleFav}/>}
+          render={() => (
+            <Container
+              data={vehicles}
+              type="vehicles"
+              toggleFav={this.toggleFav}
+            />
+          )}
         />
         <Route
           exact
           path="/favorites"
-          render={() => <Container data={favorites} type="favorites" toggleFav={this.toggleFav}/>}
+          render={() => (
+            <Container
+              data={favorites}
+              type="favorites"
+              toggleFav={this.toggleFav}
+            />
+          )}
         />
         <Route
           path="/people/:id"
@@ -222,7 +257,11 @@ class App extends Component {
               return (
                 <div>
                   <CardDisplay {...foundPerson} />
-                  <Container data={people} type="people" toggleFav={this.toggleFav} />
+                  <Container
+                    data={people}
+                    type="people"
+                    toggleFav={this.toggleFav}
+                  />
                 </div>
               );
             } else {
@@ -241,7 +280,11 @@ class App extends Component {
               return (
                 <div>
                   <CardDisplay {...foundPlanet} />
-                  <Container data={planets} type="planets" toggleFav={this.toggleFav} />
+                  <Container
+                    data={planets}
+                    type="planets"
+                    toggleFav={this.toggleFav}
+                  />
                 </div>
               );
             } else {
@@ -260,7 +303,11 @@ class App extends Component {
               return (
                 <div>
                   <CardDisplay {...foundVehicle} />
-                  <Container data={vehicles} type="vehicles" toggleFav={this.toggleFav} />
+                  <Container
+                    data={vehicles}
+                    type="vehicles"
+                    toggleFav={this.toggleFav}
+                  />
                 </div>
               );
             } else {
