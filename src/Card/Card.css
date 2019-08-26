@@ -1,6 +1,6 @@
 .card {
   border-radius: 8px;
-  width: 300px;
+  width: 90%;
   padding-bottom: 20px;
   text-align: center;
   color: white;
@@ -22,15 +22,27 @@
 }
 
 .small-cards-h1 {
-  padding-top: 10px;
+  margin: 0;
 }
 
 .favorite-img {
-  height: 40px;
-  width: 40px;
-  float: right;
+  height: 50px;
+  width: 50px;
+  margin-left: 75%;
+  margin-top: 5%;
+  /* float: right; */
 }
 
 .small-card-labels {
   margin-bottom: 15px;
+  color: rgb(250, 238, 124);
+}
+
+.small-card-values {
+  color: white;
+  display: inline;
+}
+
+.card-list {
+  text-decoration: none;
 }
