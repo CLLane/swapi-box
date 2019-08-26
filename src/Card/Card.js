@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Card.css';
 import favorite from "../Images/favorite.svg";
 import isNotFavorite from "../Images/isNotFavorite.svg";
 
 const Card = ({ id, name, homeworld, species, population, terrain, climate, residents, model, vehicleClass, numberOfPassengers, isFavorite, toggleFav, type}) => {
-  console.log('type', type)
   const toggle = isFavorite ? favorite : isNotFavorite;
   return (
     <div>
@@ -27,3 +27,20 @@ const Card = ({ id, name, homeworld, species, population, terrain, climate, resi
 };
 
 export default Card;
+
+Card.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  homeworld: PropTypes.string,
+  species: PropTypes.string,
+  population: PropTypes.number,
+  terrain: PropTypes.string,
+  climate: PropTypes.string,
+  residents: PropTypes.array,
+  model: PropTypes.string,
+  vehicleClass: PropTypes.string,
+  numberOfPassengers: PropTypes.string,
+  isFavorite: PropTypes.bool,
+  toggleFav: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired
+}

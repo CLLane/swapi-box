@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types';
 import Card from '../Card/Card.js'
 import './Container.css';
 
@@ -36,3 +37,9 @@ const Container = ({data, type, toggleFav}) => {
 }
 
 export default Container;
+
+Container.propTypes = {
+  data: PropTypes.array.isRequired,
+  type: PropTypes.string.isRequired,
+  toggleFav: PropTypes.func.isRequired,
+}
