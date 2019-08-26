@@ -6,7 +6,6 @@ const CardDisplay = ({  name, homeworld, species, population, terrain, climate, 
 
   return (
     <div className="single-card">
-      {/* <Link to={`${}`} */}
       <section className="big-card">
         <h1 className="big-card-h1">{name}</h1>
         {homeworld && <h4 className="big-card-labels">Homeworld: <p className="big-card-values">{homeworld}</p></h4>}
