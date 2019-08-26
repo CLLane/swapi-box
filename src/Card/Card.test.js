@@ -5,6 +5,7 @@ import Card from './Card';
 describe('Card', () => {
 
   it('should match the snapshot with all data passed in correctly', () => {
+    const residents = []
     const wrapper = shallow(<Card
       id={1}
       name='Luke Skywalker'
@@ -13,6 +14,7 @@ describe('Card', () => {
       population= {200000}
       terrain= 'grasslands, mountains'
       climate= 'temperate'
+      residents={residents}
       model= 'Digger Crawler'
       vehicleClass= 'wheeled'
       numberOfPassengers= '30'

@@ -65,6 +65,14 @@ exports[`CardDisplay should match the snapshot with all data passed in correctly
     <h4
       className="big-card-labels"
     >
+      Residents: 
+      <p
+        className="big-card-values"
+      />
+    </h4>
+    <h4
+      className="big-card-labels"
+    >
       Model: 
       <p
         className="big-card-values"

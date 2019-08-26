@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container should match the snapshot with all data passed in correctly 1`] = `
+<div>
+  <section
+    className="card-container"
+  >
+    <NavLink
+      key="1"
+      to="//people/1"
+    >
+      <Card
+        homeworld="Tatooine"
+        id={1}
+        key="Luke Skywalker1566847641583"
+        name="Luke Skywalker"
+        population={200000}
+        species="Human"
+        toggleFav={[MockFunction]}
+        type="/people"
+      />
+    </NavLink>
+  </section>
+</div>
+`;
