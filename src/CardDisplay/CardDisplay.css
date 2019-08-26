@@ -16,3 +16,23 @@
   color: white;
   text-decoration: none;
 }
+
+.big-card-h1 {
+  font-size: 70px;
+  margin: 0;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.big-card-labels {
+  margin: 0;
+  font-size: 30px;
+}
+
+.big-card-values {
+  font-size: 20px;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
