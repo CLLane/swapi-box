@@ -11,6 +11,10 @@ import HomeIcon from "../Images/HomeIcon.svg";
 import StarWarsIcon from "../Images/StarWarsIcon.svg";
 import favoriteIcon from "../Images/favoriteIcon.svg";
 import "./App.css";
+import { getPeople } from "../apiCalls/apiCalls.js";
+import { getVehicles } from "../apiCalls/apiCalls.js";
+import { getFilms } from "../apiCalls/apiCalls.js";
+import { getPlanets } from "../apiCalls/apiCalls.js";
 
 class App extends Component {
   constructor() {
@@ -25,22 +29,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("https://swapi.co/api/people")
-      .then(response => response.json())
+    getPeople()
       .then(data => this.getPersonInfo(data.results))
       .then(data => this.getPersonPlanet(data))
       .then(data => this.getPersonSpecies(data))
       .then(data => this.setState({ people: data }))
       .catch(error => error.message);
 
-    fetch("https://swapi.co/api/vehicles")
-      .then(response => response.json())
+    getVehicles()
       .then(data => this.getVehicleInfo(data.results))
       .then(data => this.setState({ vehicles: data }))
       .catch(error => error.message);
 
-    fetch("https://swapi.co/api/films")
-      .then(response => response.json())
+    getFilms()
       .then(data => data.results)
       .then(data =>
         this.setState({
@@ -49,8 +50,7 @@ class App extends Component {
       )
       .catch(error => error.message);
 
-    fetch("https://swapi.co/api/planets")
-      .then(response => response.json())
+    getPlanets()
       .then(data => this.getResidents(data.results))
       .then(data => this.setState({ planets: data }))
       .catch(error => error.message);
@@ -214,7 +214,10 @@ class App extends Component {
           exact
           path="/people"
           render={() => (
-            <Container data={people} type="people" toggleFav={this.toggleFav} />
+            <Container 
+            data={people} 
+            type="people" 
+            toggleFav={this.toggleFav} />
           )}
         />
         <Route
