@@ -86,5 +86,35 @@ describe('Routes', () => {
       expect(favoritesRoute.find(Container)).toHaveLength(1);
     });
 
-    
+    it('should be able to set state when a card is favorited', () => {
+      const mockCard = {name: 'Gucci Mane', homeworld: 'Trap House', species: 'G', population: 1}
+      const mockFavorites = [{ name: 'Gucci Mane', homeworld: 'Trap House', species: 'G', population: 1}]
+
+      const wrapper = shallow(<App />)
+      wrapper.setState({people: [mockCard]})
+      wrapper.instance().addToFavorites(mockCard)
+
+      expect(wrapper.state('favorites')).toEqual(mockFavorites)
+    })
+
+    it('should be able to set state when a card is removed from favorites', () => {
+      const mockCard = { name: 'Gucci Mane', homeworld: 'Trap House', species: 'G', population: 1 }
+      const mockFavorites = [{ name: 'Gucci Mane', homeworld: 'Trap House', species: 'G', population: 1 }]
+
+      const wrapper = shallow(<App />)
+      wrapper.setState({favorites: mockFavorites})
+      wrapper.instance().removeFromFavorites(mockCard)
+
+      expect(wrapper.state('favorites')).toEqual([])
+    })
+
+    // it('should fire removeFromFavorites when a card is unfavorited', () => {
+    //   const mockFavorites = [{ id: 1, name: 'Gucci Mane', homeworld: 'Trap House', species: 'G', population: 1}]
+    //   const wrapper = shallow(<App />)
+    //   wrapper.setState({ favorites: mockFavorites })
+    //   const removeFromFavorites = jest.fn();
+    //   wrapper.instance().toggleFav()
+
+    //   expect(removeFromFavorites).toHaveBeenCalled()
+    // })
 });

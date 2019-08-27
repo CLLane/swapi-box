@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './CardDisplay.css';
-import favorite from "../Images/favorite.svg";
-import isNotFavorite from "../Images/isNotFavorite.svg";
 
 const CardDisplay = ({  id, name, homeworld, species, population, terrain, climate, residents, model, vehicleClass, numberOfPassengers }) => {
   return (

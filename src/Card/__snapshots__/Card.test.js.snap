@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card should match the snapshot if the card is favorited 1`] = `
-<div>
+<div
+  className="card-list"
+>
   <section
     className="card"
   >
@@ -20,56 +22,90 @@ exports[`Card should match the snapshot if the card is favorited 1`] = `
       className="small-card-labels"
     >
       Homeworld: 
-      Tatooine
+      <p
+        className="small-card-values"
+      >
+        Tatooine
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Species: 
-      Human
+      <p
+        className="small-card-values"
+      >
+        Human
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Population: 
-      200000
+      <p
+        className="small-card-values"
+      >
+        200000
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Terrain: 
-      grasslands, mountains
+      <p
+        className="small-card-values"
+      >
+        grasslands, mountains
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Climate: 
-      temperate
+      <p
+        className="small-card-values"
+      >
+        temperate
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Model: 
-      Digger Crawler
+      <p
+        className="small-card-values"
+      >
+        Digger Crawler
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Vehicle Class: 
-      wheeled
+      <p
+        className="small-card-values"
+      >
+        wheeled
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Number of Passengers: 
-      30
+      <p
+        className="small-card-values"
+      >
+        30
+      </p>
     </h4>
   </section>
 </div>
 `;
 
 exports[`Card should match the snapshot with all data passed in correctly 1`] = `
-<div>
+<div
+  className="card-list"
+>
   <section
     className="card"
   >
@@ -88,54 +124,89 @@ exports[`Card should match the snapshot with all data passed in correctly 1`] = 
       className="small-card-labels"
     >
       Homeworld: 
-      Tatooine
+      <p
+        className="small-card-values"
+      >
+        Tatooine
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Species: 
-      Human
+      <p
+        className="small-card-values"
+      >
+        Human
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Population: 
-      200000
+      <p
+        className="small-card-values"
+      >
+        200000
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Terrain: 
-      grasslands, mountains
+      <p
+        className="small-card-values"
+      >
+        grasslands, mountains
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Climate: 
-      temperate
+      <p
+        className="small-card-values"
+      >
+        temperate
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Residents: 
+      <p
+        className="small-card-values"
+      />
     </h4>
     <h4
       className="small-card-labels"
     >
       Model: 
-      Digger Crawler
+      <p
+        className="small-card-values"
+      >
+        Digger Crawler
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Vehicle Class: 
-      wheeled
+      <p
+        className="small-card-values"
+      >
+        wheeled
+      </p>
     </h4>
     <h4
       className="small-card-labels"
     >
       Number of Passengers: 
-      30
+      <p
+        className="small-card-values"
+      >
+        30
+      </p>
     </h4>
   </section>
 </div>
