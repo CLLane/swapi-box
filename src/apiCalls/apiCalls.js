@@ -4,7 +4,9 @@ export const getPeople = () => {
       throw Error("Error Fetching Ideas");
     }
     return response.json();
-  });
+  }).catch(error => {
+    throw(Error(error.message))
+  })
 };
 
 export const getVehicles = () => {
@@ -13,7 +15,9 @@ export const getVehicles = () => {
       throw Error("Error Fetching Ideas");
     }
     return response.json();
-  });
+  }).catch(error => {
+    throw(Error(error.message))
+  })
 };
 
 export const getFilms = () => {
@@ -22,7 +26,9 @@ export const getFilms = () => {
       throw Error("Error Fetching Ideas");
     }
     return response.json();
-  });
+  }).catch(error => {
+    throw(Error(error.message))
+  })
 };
 
 export const getPlanets = () => {
@@ -31,5 +37,7 @@ export const getPlanets = () => {
       throw Error("Error Fetching Ideas");
     }
     return response.json();
-  });
+  }).catch(error => {
+    throw(Error(error.message))
+  })
 };

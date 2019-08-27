@@ -22,5 +22,5 @@ const Landing = ({film}) => {
 export default Landing;
 
 Landing.propTypes = {
-  film: PropTypes.array,
+  film: PropTypes.string,
 }

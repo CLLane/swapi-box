@@ -26,8 +26,8 @@ const CardDisplay = ({  id, name, homeworld, species, population, terrain, clima
 export default CardDisplay;
 
 CardDisplay.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  name: PropTypes.string,
   homeworld: PropTypes.string,
   species: PropTypes.string,
   population: PropTypes.number,

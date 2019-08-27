@@ -5,7 +5,6 @@ import Card from '../Card/Card.js'
 import './Container.css';
 
 const Container = ({data, type, toggleFav}) => {
-  console.log("data", data)
   const allInfo = data.map((attr, i) => {
     return (
     <NavLink to={`/${type}/${attr.id}`} key={attr.id}>
