@@ -30,7 +30,7 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
+If you would like to view our test suite you can open your text-editor and launch the test runner in the interactive watch mode.<br>
 
 
 
