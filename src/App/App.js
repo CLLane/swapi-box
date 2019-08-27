@@ -11,10 +11,7 @@ import HomeIcon from "../Images/HomeIcon.svg";
 import StarWarsIcon from "../Images/StarWarsIcon.svg";
 import favoriteIcon from "../Images/favoriteIcon.svg";
 import "./App.css";
-import { getPeople } from "../apiCalls/apiCalls.js";
-import { getVehicles } from "../apiCalls/apiCalls.js";
-import { getFilms } from "../apiCalls/apiCalls.js";
-import { getPlanets } from "../apiCalls/apiCalls.js";
+import { getPeople, getVehicles, getFilms, getPlanets } from "../apiCalls/apiCalls.js";
 
 class App extends Component {
   constructor() {
