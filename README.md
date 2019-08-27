@@ -1,6 +1,6 @@
 ## SWAPI-Box: Star Wars
 
-#### SWAPI-Box is the first paired project of Mod 3. With this project we were challenged to create a unique user experience that displays select information from the SWAPI-Box star wars API. 
+#### SWAPI-Box is the first paired project of Mod 3. With this project we were challenged to create a unique user experience that displays select information from the SWAPI-Box star wars API. You can browse through people, planets, and vehicles and favorite any card that you would like to revisit later.
 
 This application was built with create-react-app and the SWAPI-Box API. The learning goals for this project included:
 - Writing clean code within organized components, only utilizing class components where necessary.
