@@ -41,7 +41,7 @@ class Home extends Component {
       return (
         <div className='game-prompt'>
           <h1>The Fate of the Galaxy is in your hands!</h1>
-          <p>Destroy the Enemies while we prepare Operation Swapi-Box</p>
+          <p>Destroy the Enemies by hitting them with your light-saber/cursor, while we prepare Operation Swapi-Box</p>
           <button onClick={() => this.startGame()}>
            Do. Or do not. There is no try.
           </button>

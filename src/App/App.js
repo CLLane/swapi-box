@@ -138,14 +138,20 @@ class App extends Component {
     const foundCard = this.state[`${type}`].find(card => {
       return card.id === id - 1;
     });
+    this.state.favorites.map(favorite => favorite.name).includes(foundCard.name) ? this.removeFromFavorites(foundCard) : this.addToFavorites(foundCard)
     foundCard.isFavorite = !foundCard.isFavorite;
-    this.saveToLocalStorage([...this.state.favorites, foundCard]);
-    this.setState(
-      {
-        favorites: [...this.state.favorites, foundCard]
-      }
-    );
   };
+  
+  addToFavorites = (foundCard) => {
+    this.saveToLocalStorage([...this.state.favorites, foundCard])
+    this.setState({favorites: [...this.state.favorites, foundCard]});
+  }
+
+  removeFromFavorites = (foundCard) => {
+    const filteredFavorites = this.state.favorites.filter(card => card.name !== foundCard.name);
+    this.saveToLocalStorage(filteredFavorites);
+    this.setState({ favorites: filteredFavorites})
+  }
 
   saveToLocalStorage = favorites => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -311,9 +317,9 @@ class App extends Component {
           render={({ match }) => {
             const { id } = match.params;
             const foundFavorite = favorites.find(
-              planet => planet.id === parseInt(id)
+              favorite => favorite.id === parseInt(id)
             );
-  
+
               return (
                 <div>
                   <CardDisplay {...foundFavorite} />
