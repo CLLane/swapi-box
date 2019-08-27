@@ -32,6 +32,6 @@ You will also see any lint errors in the console.
 
 If you would like to view our test suite you can open your text-editor and launch the test runner in the interactive watch mode.<br>
 
-
+![Gif](.src/Gif/swapi.gif)
 
 
